@@ -26,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
         listView = findViewById(R.id.listview);
 
         arrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1,name);
+        listView.setAdapter(arrayAdapter);
     }
 
     @Override
@@ -45,6 +46,8 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public boolean onQueryTextChange(String newText) {
+
+                arrayAdapter.getFilter().filter(newText);
                 return false;
             }
         });
